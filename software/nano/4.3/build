@@ -1,8 +1,7 @@
 #!/bin/sh
 
 fetch() {
-	
-	echo $1
-	echo $2
-
+	FILENAME="nano-4.3.tar.xz"
+	wget -O "$CACHE_DIR/$FILENAME" https://www.nano-editor.org/dist/v4/$FILENAME
+	tar xfv "$CACHE_DIR/$FILENAME" -C "$CACHE_DIR"
 }
