@@ -10,3 +10,7 @@ fetch() {
 build() {
 	cd "$CACHE_DIR/nano-4.3"
 }
+
+install() {
+
+}
