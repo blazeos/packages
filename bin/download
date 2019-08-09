@@ -1,13 +1,12 @@
 #!/bin/sh
 
 PACKAGE=$1
-VERSION=$2
-
-if [ ! -z "$2" ]; then
-  VERSION="stable"
-fi
+VERSION=${2:-"stable"}
 
 if [ ! -d "/Programs/blazeos/software/$PACKAGE/$VERSION" ]; then
-  echo "Package $1 ($2) does not exist. Please check your spelling."
+  echo "Package $PACKAGE ($VERSION) does not exist. Please check your spelling."
 fi
 
+source /Programs/blazeos/software/$PACKAGE/$VERSION/build
+
+fetch $PACKAGE $
