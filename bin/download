@@ -9,4 +9,4 @@ fi
 
 source /Programs/blazeos/software/$PACKAGE/$VERSION/build
 
-fetch $PACKAGE $
+fetch $PACKAGE $VERSION
