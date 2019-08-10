@@ -9,6 +9,7 @@ BUILD_DIR="/Programs/blazeos/build"
 
 if [ ! -d "/Programs/blazeos/software/$PACKAGE/$VERSION" ]; then
   echo "Package $PACKAGE ($VERSION) does not exist. Please check your spelling."
+  exit 1
 fi
 
 source /Programs/blazeos/software/$PACKAGE/$VERSION/build
