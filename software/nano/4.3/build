@@ -13,5 +13,5 @@ install() {
 		--sysconfdir=/etc \
 		--enable-utf8
 		
-	#make -j($nproc)
+	#make -j($nproc) V=1
 }
