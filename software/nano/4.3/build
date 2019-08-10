@@ -1,3 +1,4 @@
+NAME="Nano"
 FILENAME="nano-4.3.tar.xz"
 SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
 
@@ -7,5 +8,10 @@ build() {
 }
 
 install() {
-
+	./configure \
+		--prefix=/ \
+		--sysconfdir=/etc \
+		--enable-utf8
+		
+	#make -j($nproc)
 }
