@@ -14,7 +14,8 @@ build() {
 		--without-manpages \
 		--enable-static=no \
 		--enable-widec \
-		--without-ada
+		--without-ada \
+		--host=$ARCH
 
 	#make -j($nproc) V=1
     
