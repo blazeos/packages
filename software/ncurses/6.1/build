@@ -1,1 +1,26 @@
+NAME="Ncurses"
+FILENAME="ncurses-6.1.tar.gz"
+SOURCE="https://mirrors.dotsrc.org/gnu/ncurses/$FILENAME"
 
+build() {
+	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
+	cd "$BUILD_DIR/ncurses-6.1"
+	
+	./configure \
+		--prefix= \
+		--with-shared \
+		--without-debug \
+		--disable-stripping \
+		--without-manpages \
+		--enable-static=no \
+		--enable-widec \
+		--without-ada
+
+	#make -j($nproc) V=1
+    
+}
+
+install() {
+  echo "hej"
+  #make install DESTDIR=/opt/sysroot/Programs/ncurses/6.1
+}
