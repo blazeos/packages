@@ -7,16 +7,16 @@ build() {
 	cd "$BUILD_DIR/ncurses-6.1"
 	
 	./configure \
-    --prefix= \
-    --with-shared \
-    --without-debug \
-    --disable-stripping \
-    --without-manpages \
-    --enable-static=no \
-    --enable-widec \
-    --without-ada
-  
-  #make -j($nproc) V=1
+		--prefix= \
+		--with-shared \
+		--without-debug \
+		--disable-stripping \
+		--without-manpages \
+		--enable-static=no \
+		--enable-widec \
+		--without-ada
+
+	#make -j($nproc) V=1
     
 }
 
