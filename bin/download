@@ -15,10 +15,13 @@ source /Programs/blazeos/software/$PACKAGE/$VERSION/build
 rm -rf "$BUILD_DIR/*"
 
 if [ ! -f "$CACHE_DIR/$FILENAME" ]; then
+  echo "Downloading $NAME..."
   wget -O "$CACHE_DIR/$FILENAME" "$SOURCE"
   #VERIFY CHECKSUM!!
 fi
 
+echo "Compiling $NAME..."
 build
 
+echo "Installing $NAME..."
 install
