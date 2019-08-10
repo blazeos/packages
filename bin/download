@@ -4,6 +4,7 @@ PACKAGE=$1
 VERSION=${2:-"stable"}
 
 CACHE_DIR="/Programs/blazeos/cache"
+BUILD_DIR="/Programs/blazeos/build"
 
 if [ ! -d "/Programs/blazeos/software/$PACKAGE/$VERSION" ]; then
   echo "Package $PACKAGE ($VERSION) does not exist. Please check your spelling."
@@ -11,7 +12,11 @@ fi
 
 source /Programs/blazeos/software/$PACKAGE/$VERSION/build
 
-fetch
+rm -rf "$BUILD_DIR/*"
+
+if [ ! -f "$CACHE_DIR/$FILENAME" ]; then
+  wget -O "$CACHE_DIR/$FILENAME" "$SOURCE"
+fi
 
 build
 
