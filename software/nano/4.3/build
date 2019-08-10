@@ -5,13 +5,15 @@ SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
 	cd "$BUILD_DIR/nano-4.3"
-}
-
-install() {
+	
 	./configure \
 		--prefix=/ \
 		--sysconfdir=/etc \
 		--enable-utf8
 		
 	#make -j($nproc) V=1
+}
+
+install() {
+	echo "hej"
 }
