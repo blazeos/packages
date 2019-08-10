@@ -1,7 +1,7 @@
 NAME="Ncurses"
 FILENAME="ncurses-6.1.tar.gz"
 SOURCE="https://mirrors.dotsrc.org/gnu/ncurses/$FILENAME"
-
+exit
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
 	cd "$BUILD_DIR/ncurses-6.1"
