@@ -3,7 +3,7 @@ FILENAME="nano-4.3.tar.xz"
 SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
 
 build() {
-	tar xfv "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
+	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
 	cd "$BUILD_DIR/nano-4.3"
 }
 
