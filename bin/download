@@ -3,6 +3,7 @@ set -e
 
 PACKAGE=$1
 VERSION=${2:-"stable"}
+ARCH=$(gcc -dumpmachine)
 
 CACHE_DIR="/Programs/blazeos/cache"
 BUILD_DIR="/Programs/blazeos/build"
