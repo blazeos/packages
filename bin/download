@@ -24,8 +24,5 @@ fi
 echo "Compiling $NAME..."
 build
 
-echo "Press enter..."
-read
-
 echo "Installing $NAME..."
 install
