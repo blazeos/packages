@@ -10,7 +10,8 @@ build() {
 install() {
 	./configure \
 		--prefix=/ \
-		--sysconfdir=/etc
+		--sysconfdir=/etc \
+		--enable-utf8
 		
 	#make -j($nproc) V=1
 }
