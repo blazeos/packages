@@ -21,7 +21,7 @@ if [ ! -f "$CACHE_DIR/$FILENAME" ]; then
   wget -O "$CACHE_DIR/$FILENAME" "$SOURCE"
   #VERIFY CHECKSUM!!
 fi
-
+exit
 echo "Compiling $NAME..."
 build
 
