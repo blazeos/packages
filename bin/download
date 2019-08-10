@@ -16,6 +16,7 @@ rm -rf "$BUILD_DIR/*"
 
 if [ ! -f "$CACHE_DIR/$FILENAME" ]; then
   wget -O "$CACHE_DIR/$FILENAME" "$SOURCE"
+  #VERIFY CHECKSUM!!
 fi
 
 build
