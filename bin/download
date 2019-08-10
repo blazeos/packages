@@ -2,6 +2,8 @@
 set -e
 
 PACKAGE=$1
+
+#IF $2 IS EMPTY, PULL STABLE VERSION NUMBER!
 VERSION=${2:-"stable"}
 ARCH=$(gcc -dumpmachine)
 
