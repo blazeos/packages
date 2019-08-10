@@ -8,6 +8,11 @@ ARCH=$(gcc -dumpmachine)
 CACHE_DIR="/Programs/blazeos/cache"
 BUILD_DIR="/Programs/blazeos/build"
 
+if [ -d "/Programs/$PACKAGE/$VERSION" ]; then
+  echo "Package $PACKAGE ($VERSION) is already installed."
+  exit 2
+fi
+
 if [ ! -d "/Programs/blazeos/software/$PACKAGE/$VERSION" ]; then
   echo "Package $PACKAGE ($VERSION) does not exist. Please check your spelling."
   exit 1
