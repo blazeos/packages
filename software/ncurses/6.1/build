@@ -1,4 +1,4 @@
-NAME="Ncurses"
+NAME="ncurses"
 FILENAME="ncurses-6.1.tar.gz"
 SOURCE="https://mirrors.dotsrc.org/gnu/ncurses/$FILENAME"
 
