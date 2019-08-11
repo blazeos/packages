@@ -21,18 +21,18 @@ build() {
 }
 
 install() {
-	make install DESTDIR=/Programs/ncurses/6.1
-	unlink /Programs/ncurses/6.1/lib/terminfo
-	rm -rf /Programs/ncurses/6.1/lib/*.a
+	make install DESTDIR=$INSTALL_DIR
+	unlink $INSTALL_DIR/lib/terminfo
+	rm -rf $INSTALL_DIR/lib/*.a
 	
-	mkdir -p /Programs/ncurses/6.1/share/pkgconfig
+	mkdir -p $INSTALL_DIR/share/pkgconfig
 	for lib in ncurses form panel menu; do
-    		rm -vf /Programs/ncurses/6.1/lib/lib${lib}.so
-    		echo "INPUT(-l${lib}w)" > /Programs/ncurses/6.1/lib/lib${lib}.so
-    		ln -sfv ${lib}w.pc /Programs/ncurses/6.1/share/pkgconfig/${lib}.pc
+    		rm -vf $INSTALL_DIR/lib/lib${lib}.so
+    		echo "INPUT(-l${lib}w)" > $INSTALL_DIR/lib/lib${lib}.so
+    		ln -sfv ${lib}w.pc $INSTALL_DIR/share/pkgconfig/${lib}.pc
 	done
 	
-	rm -f /Programs/ncurses/6.1/lib/libcursesw.so
-	echo "INPUT(-lncursesw)" > /Programs/ncurses/6.1/lib/libcursesw.so
-	ln -sf libncurses.so /Programs/ncurses/6.1/lib/libcurses.so
+	rm -f $INSTALL_DIR/lib/libcursesw.so
+	echo "INPUT(-lncursesw)" > $INSTALL_DIR/lib/libcursesw.so
+	ln -sf libncurses.so $INSTALL_DIR/lib/libcurses.so
 }
