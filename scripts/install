@@ -70,6 +70,8 @@ build
 echo "Installing $NAME..."
 install
 
+#IF CURRENT ALREADY EXIST, MUST UNLINK CURRENT VERSION FIRST!!!
+
 echo "Linking files to index..."
 link_files Binaries $PACKAGE/$VERSION/bin
 link_files Binaries $PACKAGE/$VERSION/sbin
