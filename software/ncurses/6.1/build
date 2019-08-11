@@ -1,7 +1,6 @@
 NAME="ncurses"
 FILENAME="ncurses-6.1.tar.gz"
 SOURCE="https://mirrors.dotsrc.org/gnu/ncurses/$FILENAME"
-DEPENDENCIES=(ncursesw)
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
@@ -11,8 +10,10 @@ build() {
 		--prefix= \
 		--with-shared \
 		--without-debug \
+		--disable-stripping \
 		--without-manpages \
 		--enable-static=no \
+		--enable-widec \
 		--without-ada \
 		--host=$ARCH
 
@@ -23,7 +24,15 @@ install() {
 	make install DESTDIR=$INSTALL_DIR
 	unlink $INSTALL_DIR/lib/terminfo
 	rm -rf $INSTALL_DIR/lib/*.a
-	rm -rf $INSTALL_DIR/bin
-	rm -rf $INSTALL_DIR/include
-	rm -rf $INSTALL_DIR/share
+	
+	mkdir -p $INSTALL_DIR/share/pkgconfig
+	for lib in ncurses form panel menu; do
+    		rm -f $INSTALL_DIR/lib/lib${lib}.so
+    		echo "INPUT(-l${lib}w)" > $INSTALL_DIR/lib/lib${lib}.so
+    		ln -sf ${lib}w.pc $INSTALL_DIR/share/pkgconfig/${lib}.pc
+	done
+	
+	rm -f $INSTALL_DIR/lib/libcursesw.so
+	echo "INPUT(-lncursesw)" > $INSTALL_DIR/lib/libcursesw.so
+	ln -sf libncurses.so $INSTALL_DIR/lib/libcurses.so
 }
