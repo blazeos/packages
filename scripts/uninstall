@@ -24,6 +24,7 @@ fi
 
 dir="/Programs/$PACKAGE/$VERSION/bin"
 if [ -d "$dir" ]; then
+  echo "Unlinking bin..."
   find "$dir" -not -type d | \
   while read path; do
     file="${path/$dir\//}"
@@ -33,6 +34,7 @@ fi
 
 dir="/Programs/$PACKAGE/$VERSION/sbin"
 if [ -d "$dir" ]; then
+  echo "Unlinking sbin..."
   find "$dir" -not -type d | \
   while read path; do
     file="${path/$dir\//}"
@@ -42,6 +44,7 @@ fi
 
 dir="/Programs/$PACKAGE/$VERSION/include"
 if [ -d "$dir" ]; then
+  echo "Unlinking include..."
   find "$dir" -not -type d | \
   while read path; do
     file="${path/$dir\//}"
@@ -51,6 +54,7 @@ fi
 
 dir="/Programs/$PACKAGE/$VERSION/share"
 if [ -d "$dir" ]; then
+  echo "Unlinking share..."
   find "$dir" -not -type d | \
   while read path; do
     file="${path/$dir\//}"
@@ -60,6 +64,7 @@ fi
 
 dir="/Programs/$PACKAGE/$VERSION/lib"
 if [ -d "$dir" ]; then
+  echo "Unlinking lib..."
   find "$dir" -not -type d | \
   while read path; do
     file="${path/$dir\//}"
@@ -69,6 +74,7 @@ fi
 
 dir="/Programs/$PACKAGE/$VERSION/libexec"
 if [ -d "$dir" ]; then
+  echo "Unlinking libexec..."
   find "$dir" -not -type d | \
   while read path; do
     file="${path/$dir\//}"
