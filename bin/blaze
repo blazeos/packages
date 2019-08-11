@@ -3,7 +3,9 @@ set -e
 
 if [ -z "$1" ]
 then
-  echo "Available commands: install, uninstall"
+  echo "Available commands:"
+  echo "install"
+  echo "uninstall"
   exit 0
 fi
 
