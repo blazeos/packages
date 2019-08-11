@@ -27,7 +27,7 @@ if [ -d "/Programs/$PACKAGE/$VERSION" ]; then
 fi
 
 if [ ! -d "/Programs/blazeos/software/$PACKAGE/$VERSION" ]; then
-  echo "Version $VERSION of package $PACKAGE does not exit."
+  echo "Version $VERSION of package $PACKAGE does not exist."
   exit 1
 fi
 
