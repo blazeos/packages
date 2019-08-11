@@ -9,8 +9,9 @@ git -C /Programs/blazeos pull -f
 PACKAGE=$2
 
 if [ -z "$3" ]; then
-  if VERSION=$(readlink /Programs/blazeos/software/$PACKAGE/stable); then
-    echo echo "Package $PACKAGE does not exist. Please check your spelling."
+  VERSION=$(readlink /Programs/blazeos/software/$PACKAGE/stable)
+  if [ -z "$VERSION" ]; then
+    echo "Package $PACKAGE does not exist. Please check your spelling."
     exit 1
   fi
 fi
