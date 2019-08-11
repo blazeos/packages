@@ -1,6 +1,11 @@
 link_files () {
-  echo $1
-  echo $2
+  #echo $1 = Binaries
+  #echo $2
+  
+  find /Programs/$2 -mindepth 1 -depth -type d | \
+  while read dir; do
+    echo $dir
+  done
 }
 
 if [ -z "$2" ]; then
