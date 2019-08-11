@@ -1,4 +1,4 @@
-NAME="Nano"
+NAME="nano"
 FILENAME="nano-4.3.tar.xz"
 SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
 
