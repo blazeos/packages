@@ -1,5 +1,8 @@
-#!/bin/sh
-set -e
+if [ -z "$2" ]
+then
+  echo "You need to specify the package name to install."
+  exit 1
+fi
 
 echo "Updating software list..."
 git -C /Programs/blazeos pull -f
