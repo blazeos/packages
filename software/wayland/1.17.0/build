@@ -1,6 +1,7 @@
 NAME="wayland"
 FILENAME="wayland-1.17.0.tar.xz"
 SOURCE="https://wayland.freedesktop.org/releases/$FILENAME"
+DEPENDENCIES=(libffi expat libxml2)
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
