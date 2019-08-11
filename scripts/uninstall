@@ -27,41 +27,53 @@ if [ -d "$dir" ]; then
   find "$dir" -not -type d | \
   while read path; do
     file="${path/$dir\//}"
-    echo $file
     unlink "/System/Index/Binaries/$file" &> /dev/null || true
   done
 fi
 
-exit
+dir="/Programs/$PACKAGE/$VERSION/sbin"
+if [ -d "$dir" ]; then
+  find "$dir" -not -type d | \
+  while read path; do
+    file="${path/$dir\//}"
+    unlink "/System/Index/Binaries/$file" &> /dev/null || true
+  done
+fi
 
-find /Programs/$PACKAGE/$VERSION/sbin -not -type d | \
-while read path; do
-  file="${path/\/Programs\/$PACKAGE\/$VERSION\/sbin\//}" 
-  unlink "/System/Index/Binaries/$file" &> /dev/null || true
-done
+dir="/Programs/$PACKAGE/$VERSION/include"
+if [ -d "$dir" ]; then
+  find "$dir" -not -type d | \
+  while read path; do
+    file="${path/$dir\//}"
+    unlink "/System/Index/Includes/$file" &> /dev/null || true
+  done
+fi
 
-find /Programs/$PACKAGE/$VERSION/include -not -type d | \
-while read path; do
-  file="${path/\/Programs\/$PACKAGE\/$VERSION\/include\//}"
-  unlink "/System/Index/Includes/$file" &> /dev/null || true
-done
+dir="/Programs/$PACKAGE/$VERSION/share"
+if [ -d "$dir" ]; then
+  find "$dir" -not -type d | \
+  while read path; do
+    file="${path/$dir\//}"
+    unlink "/System/Index/Shared/$file" &> /dev/null || true
+  done
+fi
 
-find /Programs/$PACKAGE/$VERSION/lib -not -type d | \
-while read path; do
-  file="${path/\/Programs\/$PACKAGE\/$VERSION\/lib\//}"
-  unlink "/System/Index/Libraries/$file" &> /dev/null || true
-done
+dir="/Programs/$PACKAGE/$VERSION/lib"
+if [ -d "$dir" ]; then
+  find "$dir" -not -type d | \
+  while read path; do
+    file="${path/$dir\//}"
+    unlink "/System/Index/Libraries/$file" &> /dev/null || true
+  done
+fi
 
-find /Programs/$PACKAGE/$VERSION/share -not -type d | \
-while read path; do
-  file="${path/\/Programs\/$PACKAGE\/$VERSION\/share\//}"
-  unlink "/System/Index/Shared/$file" &> /dev/null || true
-done
-
-find /Programs/$PACKAGE/$VERSION/libexec -not -type d | \
-while read path; do
-  file="${path/\/Programs\/$PACKAGE\/$VERSION\/libexec\//}"
-  unlink "/System/Index/Libraries/libexec/$file" &> /dev/null || true
-done
+dir="/Programs/$PACKAGE/$VERSION/libexec"
+if [ -d "$dir" ]; then
+  find "$dir" -not -type d | \
+  while read path; do
+    file="${path/$dir\//}"
+    unlink "/System/Index/Libraries/libexec/$file" &> /dev/null || true
+  done
+fi
 
 echo "Done!"
