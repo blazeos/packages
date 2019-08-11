@@ -14,14 +14,6 @@ if [ -z "$VERSION" ]; then
   fi
 fi
 
-#delete any empty directories!
-
-#strip all binaries
-
-#check if specified version and package exists
-#if version specified is the current one, unlink current
-#the installer should autolink all the common directories, add a flag to disable!
-
 dir="/Programs/$PACKAGE/$VERSION/bin"
 if [ -d "$dir" ]; then
   echo "Unlinking bin..."
@@ -81,6 +73,8 @@ if [ -d "$dir" ]; then
     unlink "/System/Index/Libraries/libexec/$file" &> /dev/null || true
   done
 fi
+
+#DELETE ANY EMPTY DIRECTORIES!!
 
 rm -rf "/Programs/$PACKAGE/$VERSION"
 
