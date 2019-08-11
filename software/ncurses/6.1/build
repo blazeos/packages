@@ -17,7 +17,7 @@ build() {
 		--without-ada \
 		--host=$ARCH
 
-	make -j($nproc) V=1
+	make -j$(nproc) V=1
     
 }
 
