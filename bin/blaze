@@ -11,3 +11,4 @@ if [ ! -f "/Programs/blazeos/scripts/$1" ]; then
   exit 1
 fi
 
+. "/Programs/blazeos/scripts/$1"

@@ -1,13 +1,13 @@
 #!/bin/sh
 set -e
 
-echo "Updateing software list..."
+echo "Updating software list..."
 git -C /Programs/blazeos pull -f
 
-PACKAGE=$1
+PACKAGE=$2
 
 #IF $2 IS EMPTY, PULL STABLE VERSION NUMBER!
-VERSION=${2:-"stable"}
+VERSION=${3:-"stable"}
 ARCH=$(gcc -dumpmachine)
 
 CACHE_DIR="/Programs/blazeos/cache"
