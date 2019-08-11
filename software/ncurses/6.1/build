@@ -16,7 +16,7 @@ build() {
 		--enable-widec \
 		--without-ada \
 		--enable-pc-files \
-		--with-pkg-config-libdir=/share \
+		--with-pkg-config-libdir=/share/pkgconfig \
 		--host=$ARCH
 
 	make -j$(nproc) V=1
