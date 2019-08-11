@@ -20,8 +20,10 @@ fi
 
 find /Programs/$PACKAGE/$VERSION/bin -not -type d | \
 while read path; do
-  echo $path
-    
   file="${path/\/Programs\/$PACKAGE\/$VERSION\/bin\//}" 
   echo $file
+  
+  unlink "/System/Index/Binaries/$file"
 done
+
+echo "Done!"
