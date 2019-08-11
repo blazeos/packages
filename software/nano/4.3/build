@@ -16,4 +16,8 @@ build() {
 
 install() {
 	make install DESTDIR=$INSTALL_DIR
+	rm -rf "$INSTALL_DIR/doc"
+	rm -rf "$INSTALL_DIR/info"
+	rm -rf "$INSTALL_DIR/locale"
+	rm -rf "$INSTALL_DIR/man"
 }
