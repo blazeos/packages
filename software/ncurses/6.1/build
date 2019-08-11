@@ -22,6 +22,5 @@ build() {
 }
 
 install() {
-	echo "hej"
-	#make install DESTDIR=/opt/sysroot/Programs/ncurses/6.1
+	make install DESTDIR=/Programs/ncurses/6.1
 }
