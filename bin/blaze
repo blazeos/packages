@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ ! -f "/Programs/blazeos/scripts/$1" ]; then
+  echo "The command \"$1\" does not exist. Please check your spelling."
+  exit 1
+fi
+
