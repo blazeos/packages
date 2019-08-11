@@ -22,11 +22,17 @@ fi
 #if version specified is the current one, unlink current
 #the installer should autolink all the common directories, add a flag to disable!
 
-find /Programs/$PACKAGE/$VERSION/bin -not -type d | \
-while read path; do
-  file="${path/\/Programs\/$PACKAGE\/$VERSION\/bin\//}" 
-  unlink "/System/Index/Binaries/$file" &> /dev/null || true
-done
+dir="/Programs/$PACKAGE/$VERSION/bin"
+if [ -d "$dir" ]; then
+  find "$dir" -not -type d | \
+  while read path; do
+    file="${path/$dir\//}"
+    echo $file
+    unlink "/System/Index/Binaries/$file" &> /dev/null || true
+  done
+fi
+
+exit
 
 find /Programs/$PACKAGE/$VERSION/sbin -not -type d | \
 while read path; do
