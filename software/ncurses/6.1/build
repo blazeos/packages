@@ -23,4 +23,6 @@ build() {
 
 install() {
 	make install DESTDIR=/Programs/ncurses/6.1
+	unlink /Programs/ncurses/6.1/lib/terminfo
+	rm -rf /opt/sysroot/Programs/ncurses/6.1/lib/*.a
 }
