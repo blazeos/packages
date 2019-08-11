@@ -16,6 +16,10 @@ if [ -z "$3" ]; then
   fi
 fi
 
+echo "aaa"
+echo $VERSION
+exit
+
 ARCH=$(gcc -dumpmachine)
 CACHE_DIR="/Programs/blazeos/cache"
 BUILD_DIR="/Programs/blazeos/build"
