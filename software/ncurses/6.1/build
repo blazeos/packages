@@ -17,11 +17,11 @@ build() {
 		--without-ada \
 		--host=$ARCH
 
-	#make -j($nproc) V=1
+	make -j($nproc) V=1
     
 }
 
 install() {
-  echo "hej"
-  #make install DESTDIR=/opt/sysroot/Programs/ncurses/6.1
+	echo "hej"
+	#make install DESTDIR=/opt/sysroot/Programs/ncurses/6.1
 }
