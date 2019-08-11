@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+echo "Updateing software list..."
+git -C /Programs/blazeos pull -f
+
 PACKAGE=$1
 
 #IF $2 IS EMPTY, PULL STABLE VERSION NUMBER!
