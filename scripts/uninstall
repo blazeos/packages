@@ -17,5 +17,10 @@ fi
 #check if specified version and package exists
 #if version specified is the current one, unlink current
 
-echo $PACKAGE
-echo $VERSION
+find /Programs/$PACKAGE/$VERSION/bin -not -type d | \
+while read path; do
+  echo $path
+  
+  file="/System/s/a/"
+  echo $file
+done
