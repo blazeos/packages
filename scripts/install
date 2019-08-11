@@ -69,6 +69,9 @@ install
 
 #IF CURRENT ALREADY EXIST, MUST UNLINK CURRENT VERSION FIRST!!!
 
+echo "Change active version to $VERSION"
+ln -sf $VERSION /Programs/$PACKAGE/current
+
 echo "Linking files to index..."
 link_files Binaries $PACKAGE/$VERSION/bin
 link_files Binaries $PACKAGE/$VERSION/sbin
@@ -76,9 +79,6 @@ link_files Includes $PACKAGE/$VERSION/include
 link_files Libraries $PACKAGE/$VERSION/lib
 link_files Libraries/libexec $PACKAGE/$VERSION/libexec
 link_files Shared $PACKAGE/$VERSION/share
-
-echo "Change active version to $VERSION"
-ln -sf $VERSION /Programs/$PACKAGE/current
 
 echo "Cleaning up build directory..."
 rm -rf "$BUILD_DIR/*"
