@@ -21,5 +21,8 @@ build() {
 install() {
 	make install DESTDIR=$INSTALL_DIR
 	unlink $INSTALL_DIR/lib/terminfo
-	rm -rf $INSTALL_DIR/lib/*.a	
+	rm -rf $INSTALL_DIR/lib/*.a
+	rm -rf $INSTALL_DIR/bin
+	rm -rf $INSTALL_DIR/include
+	rm -rf $INSTALL_DIR/share
 }
