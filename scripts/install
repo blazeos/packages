@@ -1,3 +1,8 @@
+link_files () {
+  echo $1
+  echo $2
+}
+
 if [ -z "$2" ]; then
   echo "You need to specify the package name to install."
   exit 1
@@ -47,8 +52,13 @@ build
 echo "Installing $NAME..."
 install
 
-echo "Linking bla bla..."
-
+echo "Linking files to index..."
+link_files Binaries $PACKAGE/$VERSION/bin
+link_files Binaries $PACKAGE/$VERSION/sbin
+link_files Includes $PACKAGE/$VERSION/include
+link_files Libraries $PACKAGE/$VERSION/lib
+link_files Libraries/libexec $PACKAGE/$VERSION/libexec
+link_files Shared $PACKAGE/$VERSION/share
 
 echo "Cleaning up build directory..."
-#rm -rf "$BUILD_DIR/*"
+rm -rf "$BUILD_DIR/*"
