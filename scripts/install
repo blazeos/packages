@@ -2,9 +2,21 @@ link_files () {
   #echo $1 = Binaries
   #echo $2
   
+  if [ ! -d "/Programs/$2" ]; then
+    return
+  fi
+  
   find /Programs/$2 -mindepth 1 -depth -type d | \
   while read dir; do
-    echo $dir
+    dir="${dir/\/Programs\/$2\//}"
+    mkdir -p "/System/Index/$1/$dir"
+  done
+
+  find /Programs/$2 -not -type d | \
+  while read target; do
+    source="/System/Index/$2/${target/\/Programs\/$1\//}"
+    #SHOULD CHECK HERE IF LINK ALREADY EXIST. STOP AND ASK TO REPLACE IF IT DOES!!
+    ln -s $target $source
   done
 }
 
