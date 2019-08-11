@@ -87,3 +87,5 @@ rm -rf "/Programs/$PACKAGE/$VERSION"
 if [ ! -e "/Programs/$PACKAGE/current" ] ; then
   unlink "/Programs/$PACKAGE/current"
 fi
+
+echo "$PACKAGE $VERSION has been removed from the system."
