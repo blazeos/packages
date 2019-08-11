@@ -16,6 +16,7 @@ fi
 
 #check if specified version and package exists
 #if version specified is the current one, unlink current
+#the installer should autolink all the common directories, add a flag to disable!
 
 find /Programs/$PACKAGE/$VERSION/bin -not -type d | \
 while read path; do
