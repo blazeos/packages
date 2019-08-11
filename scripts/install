@@ -42,8 +42,9 @@ fi
 ARCH=$(gcc -dumpmachine)
 CACHE_DIR="/Programs/blazeos/cache"
 BUILD_DIR="/Programs/blazeos/build"
+INSTALL_DIR="/Programs/$PACKAGE/$VERSION"
 
-if [ -d "/Programs/$PACKAGE/$VERSION" ]; then
+if [ -d "$INSTALL_DIR" ]; then
   echo "Package $PACKAGE ($VERSION) is already installed."
   exit 2
 fi
