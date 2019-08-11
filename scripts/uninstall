@@ -23,7 +23,7 @@ while read path; do
   file="${path/\/Programs\/$PACKAGE\/$VERSION\/bin\//}" 
   echo $file
   
-  unlink "/System/Index/Binaries/$file"
+  unlink "/System/Index/Binaries/$file" || true
 done
 
 echo "Done!"
