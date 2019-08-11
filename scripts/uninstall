@@ -37,28 +37,24 @@ done
 find /Programs/$PACKAGE/$VERSION/include -not -type d | \
 while read path; do
   file="${path/\/Programs\/$PACKAGE\/$VERSION\/include\//}"
-  echo $file
   unlink "/System/Index/Includes/$file" &> /dev/null || true
 done
 
 find /Programs/$PACKAGE/$VERSION/lib -not -type d | \
 while read path; do
   file="${path/\/Programs\/$PACKAGE\/$VERSION\/lib\//}"
-  echo $file
   unlink "/System/Index/Libraries/$file" &> /dev/null || true
 done
 
 find /Programs/$PACKAGE/$VERSION/share -not -type d | \
 while read path; do
   file="${path/\/Programs\/$PACKAGE\/$VERSION\/share\//}"
-  echo $file
   unlink "/System/Index/Shared/$file" &> /dev/null || true
 done
 
 find /Programs/$PACKAGE/$VERSION/libexec -not -type d | \
 while read path; do
   file="${path/\/Programs\/$PACKAGE\/$VERSION\/libexec\//}"
-  echo $file
   unlink "/System/Index/Libraries/libexec/$file" &> /dev/null || true
 done
 
