@@ -9,7 +9,8 @@ build() {
 	./configure \
 		--prefix=/ \
 		--sysconfdir=/etc \
-		--enable-utf8
+		--enable-utf8 \
+		--host=$ARCH
 		
 	make -j$(nproc) V=1
 }
