@@ -27,9 +27,9 @@ install() {
 	
 	mkdir -p $INSTALL_DIR/share/pkgconfig
 	for lib in ncurses form panel menu; do
-    		rm -vf $INSTALL_DIR/lib/lib${lib}.so
+    		rm -f $INSTALL_DIR/lib/lib${lib}.so
     		echo "INPUT(-l${lib}w)" > $INSTALL_DIR/lib/lib${lib}.so
-    		ln -sfv ${lib}w.pc $INSTALL_DIR/share/pkgconfig/${lib}.pc
+    		ln -sf ${lib}w.pc $INSTALL_DIR/share/pkgconfig/${lib}.pc
 	done
 	
 	rm -f $INSTALL_DIR/lib/libcursesw.so
