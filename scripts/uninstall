@@ -1,0 +1,18 @@
+if [ -z "$2" ]; then
+  echo "You need to specify the package name to uninstall."
+  exit 1
+fi
+
+PACKAGE=$2
+VERSION=$3
+
+if [ -z "$VERSION" ]; then
+  VERSION=$(readlink /Programs/$PACKAGE/current) || true
+  if [ -z "$VERSION" ]; then
+    echo "Please specify which version to uninstall."
+    exit 1
+  fi
+fi
+
+#check if specified version and package exists
+#if version specified is the current one, unlink current
