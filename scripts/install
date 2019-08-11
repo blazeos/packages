@@ -1,7 +1,4 @@
 link_files () {
-  #echo $1 = Binaries
-  #echo $2
-  
   if [ ! -d "/Programs/$2" ]; then
     return
   fi
