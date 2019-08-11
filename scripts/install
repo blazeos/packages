@@ -69,6 +69,8 @@ install
 
 #IF CURRENT ALREADY EXIST, MUST UNLINK CURRENT VERSION FIRST!!!
 
+#STRIP BINARIES AND LIBRARIES!!
+
 echo "Change active version to $VERSION"
 ln -sf $VERSION /Programs/$PACKAGE/current
 
