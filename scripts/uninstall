@@ -16,6 +16,8 @@ fi
 
 #delete any empty directories!
 
+#strip all binaries
+
 #check if specified version and package exists
 #if version specified is the current one, unlink current
 #the installer should autolink all the common directories, add a flag to disable!
@@ -23,6 +25,12 @@ fi
 find /Programs/$PACKAGE/$VERSION/bin -not -type d | \
 while read path; do
   file="${path/\/Programs\/$PACKAGE\/$VERSION\/bin\//}" 
+  unlink "/System/Index/Binaries/$file" &> /dev/null || true
+done
+
+find /Programs/$PACKAGE/$VERSION/sbin -not -type d | \
+while read path; do
+  file="${path/\/Programs\/$PACKAGE\/$VERSION\/sbin\//}" 
   unlink "/System/Index/Binaries/$file" &> /dev/null || true
 done
 
@@ -47,5 +55,11 @@ while read path; do
   unlink "/System/Index/Shared/$file" &> /dev/null || true
 done
 
+find /Programs/$PACKAGE/$VERSION/libexec -not -type d | \
+while read path; do
+  file="${path/\/Programs\/$PACKAGE\/$VERSION\/libexec\//}"
+  echo $file
+  unlink "/System/Index/Libraries/libexec/$file" &> /dev/null || true
+done
 
 echo "Done!"
