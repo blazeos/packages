@@ -21,9 +21,12 @@ fi
 find /Programs/$PACKAGE/$VERSION/bin -not -type d | \
 while read path; do
   file="${path/\/Programs\/$PACKAGE\/$VERSION\/bin\//}" 
-  echo $file
-  
   unlink "/System/Index/Binaries/$file" &> /dev/null || true
+
+  file="${path/\/Programs\/$PACKAGE\/$VERSION\/include\//}"
+  echo $file
+  unlink "/System/Index/Includes/$file" &> /dev/null || true
+
 done
 
 echo "Done!"
