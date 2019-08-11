@@ -18,11 +18,21 @@ build() {
 		--host=$ARCH
 
 	make -j$(nproc) V=1
-    
 }
 
 install() {
 	make install DESTDIR=/Programs/ncurses/6.1
 	unlink /Programs/ncurses/6.1/lib/terminfo
-	rm -rf /opt/sysroot/Programs/ncurses/6.1/lib/*.a
+	rm -rf /Programs/ncurses/6.1/lib/*.a
+	
+	mkdir -p /Programs/ncurses/6.1/share/pkgconfig
+	for lib in ncurses form panel menu; do
+    		rm -vf /Programs/ncurses/6.1/lib/lib${lib}.so
+    		echo "INPUT(-l${lib}w)" > /Programs/ncurses/6.1/lib/lib${lib}.so
+    		ln -sfv ${lib}w.pc /Programs/ncurses/6.1/share/pkgconfig/${lib}.pc
+	done
+	
+	rm -f /Programs/ncurses/6.1/lib/libcursesw.so
+	echo "INPUT(-lncursesw)" > /Programs/ncurses/6.1/lib/libcursesw.so
+	ln -sf libncurses.so /Programs/ncurses/6.1/lib/libcurses.so
 }
