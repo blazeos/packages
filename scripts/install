@@ -14,7 +14,7 @@ link_files () {
 
   find /Programs/$2 -not -type d | \
   while read target; do
-    source="/System/Index/$2/${target/\/Programs\/$1\//}"
+    source="/System/Index/$1/${target/\/Programs\/$2\//}"
     #SHOULD CHECK HERE IF LINK ALREADY EXIST. STOP AND ASK TO REPLACE IF IT DOES!!
     ln -s $target $source
   done
