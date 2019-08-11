@@ -11,7 +11,7 @@ build() {
 		--sysconfdir=/etc \
 		--enable-utf8
 		
-	make -j($nproc) V=1
+	make -j$(nproc) V=1
 }
 
 install() {
