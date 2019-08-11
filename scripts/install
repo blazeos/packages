@@ -7,18 +7,15 @@ echo "Updating software list..."
 git -C /Programs/blazeos pull -f
 
 PACKAGE=$2
+VERSION=$3
 
-if [ -z "$3" ]; then
+if [ -z "$VERSION" ]; then
   VERSION=$(readlink /Programs/blazeos/software/$PACKAGE/stable) || true
   if [ -z "$VERSION" ]; then
     echo "Package $PACKAGE does not exist. Please check your spelling."
     exit 1
   fi
 fi
-
-echo "aaa"
-echo $VERSION
-exit
 
 ARCH=$(gcc -dumpmachine)
 CACHE_DIR="/Programs/blazeos/cache"
