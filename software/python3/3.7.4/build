@@ -12,7 +12,8 @@ build() {
 		--with-system-expat \
 		--with-system-ffi \
 		--with-ensurepip=yes \
-		--host=$ARCH
+		--host=$ARCH \
+		--build=$ARCH
 		
 	make -j$(nproc) V=1
 }
