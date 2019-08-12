@@ -1,24 +1,15 @@
-NAME="nano"
-FILENAME="nano-4.3.tar.xz"
-SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
+NAME="iw"
+FILENAME="iw-5.0.1.tar.xz"
+SOURCE="https://www.kernel.org/pub/software/network/iw/$FILENAME"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
-	cd "$BUILD_DIR/nano-4.3"
+	cd "$BUILD_DIR/iw-5.0.1"
 	
-	./configure \
-		--prefix=/ \
-		--sysconfdir=/etc \
-		--enable-utf8 \
-		--host=$ARCH
-		
 	make -j$(nproc) V=1
 }
 
 install() {
-	make install DESTDIR=$INSTALL_DIR
-	rm -rf "$INSTALL_DIR/share/doc"
-	rm -rf "$INSTALL_DIR/share/info"
-	rm -rf "$INSTALL_DIR/share/locale"
-	rm -rf "$INSTALL_DIR/share/man"
+	make install DESTDIR=$INSTALL_DIR PREFIX=/
+	rm -rf "$INSTALL_DIR/share"
 }
