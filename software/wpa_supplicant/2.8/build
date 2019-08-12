@@ -15,7 +15,7 @@ build() {
 
 install() {
 	mkdir -p $INSTALL_DIR/sbin
-	install -v -m755 wpa_cli $INSTALL_DIR/sbin
-	install -v -m755 wpa_passphrase $INSTALL_DIR/sbin
-	install -v -m755 wpa_supplicant $INSTALL_DIR/sbin
+	cp wpa_cli $INSTALL_DIR/sbin
+	cp wpa_passphrase $INSTALL_DIR/sbin
+	cp wpa_supplicant $INSTALL_DIR/sbin
 }
