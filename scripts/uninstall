@@ -81,6 +81,7 @@ fi
 
 #DELETE ANY EMPTY DIRECTORIES!!
 
+echo "Removing files from Programs..."
 rm -rf "/Programs/$PACKAGE/$VERSION"
 
 #CHECK IF CURENT EXISTS!
