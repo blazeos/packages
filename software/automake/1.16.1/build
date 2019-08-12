@@ -1,6 +1,7 @@
 NAME="automake"
 FILENAME="automake-1.16.1.tar.xz"
 SOURCE="https://ftp.gnu.org/gnu/automake/$FILENAME"
+DEPENDENCIES="autoconf"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
