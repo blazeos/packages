@@ -3,6 +3,11 @@ if [ -z "$2" ]; then
   exit 1
 fi
 
+#HAVE A LIST OF CORE PACKAGES THAT CANNOT BE UNINSTALLED!!
+#expat
+#glibc
+#gcc
+
 PACKAGE=$2
 VERSION=$3
 
