@@ -8,6 +8,8 @@ fi
 #glibc
 #gcc
 #ca-certificates
+#git
+#curl
 
 PACKAGE=$2
 VERSION=$3
