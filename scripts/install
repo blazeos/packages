@@ -61,8 +61,10 @@ if [ ! -f "$CACHE_DIR/$FILENAME" ]; then
   #VERIFY CHECKSUM!!
 fi
 
-echo "Compiling $NAME..."
-build
+if [ "$(type -t build)" = 'function' ]; then
+  echo "Compiling $NAME..."
+  build
+fi
 
 echo "Installing $NAME..."
 install
