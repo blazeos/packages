@@ -24,6 +24,7 @@ if [ -z "$VERSION" ]; then
 fi
 
 dir="/Programs/$PACKAGE/$VERSION/bin"
+
 if [ -d "$dir" ]; then
   echo "Unlinking bin..."
   find "$dir" -not -type d | \

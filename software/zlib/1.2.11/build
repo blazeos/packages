@@ -9,7 +9,6 @@ build() {
 	./configure \
 		--prefix=/ \
 		--shared
-		--host=$ARCH
 		
 	make -j$(nproc) V=1
 }
