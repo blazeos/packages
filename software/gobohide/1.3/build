@@ -1,6 +1,7 @@
 NAME="gobohide"
 FILENAME="GoboHide-1.3.tar.gz"
 SOURCE="https://github.com/gobolinux/GoboHide/releases/download/1.3/$FILENAME"
+DEPENDENCIES="autoconf"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
