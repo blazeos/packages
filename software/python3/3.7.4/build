@@ -1,15 +1,17 @@
-NAME="nano"
-FILENAME="nano-4.3.tar.xz"
-SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
+NAME="python3"
+FILENAME="Python-3.7.4.tar.xz"
+SOURCE="https://www.python.org/ftp/python/3.7.4/$FILENAME"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
-	cd "$BUILD_DIR/nano-4.3"
+	cd "$BUILD_DIR/Python-3.7.4"
 	
 	./configure \
 		--prefix=/ \
-		--sysconfdir=/etc \
-		--enable-utf8 \
+		--enable-shared \
+		--with-system-expat \
+		--with-system-ffi \
+		--with-ensurepip=yes \
 		--host=$ARCH
 		
 	make -j$(nproc) V=1
@@ -17,8 +19,5 @@ build() {
 
 install() {
 	make install DESTDIR=$INSTALL_DIR
-	rm -rf "$INSTALL_DIR/share/doc"
-	rm -rf "$INSTALL_DIR/share/info"
-	rm -rf "$INSTALL_DIR/share/locale"
-	rm -rf "$INSTALL_DIR/share/man"
+	#rm -rf "$INSTALL_DIR/share/doc"
 }
