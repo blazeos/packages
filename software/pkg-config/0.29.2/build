@@ -9,6 +9,7 @@ build() {
 	./configure \
 		--prefix=/ \
 		--disable-host-tool \
+		--with-internal-glib \
 		--host=$ARCH
 		
 	make -j$(nproc) V=1
