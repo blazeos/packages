@@ -6,9 +6,9 @@ build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
 	cd "$BUILD_DIR/openssl-1.1.1c"
 	
-	CUSTOM="linux-x86_64"
-	if [[ $ARCH == *"arm"* ]]; then
-		CUSTOM="linux-armv4"
+	EXTRA_CONF="linux-x86_64"
+	if [[ $ARCH == "arm-linux-gnueabihf" ]]; then
+		EXTRA_CONF="linux-armv4"
 	fi
 	
 	./Configure \
@@ -18,7 +18,7 @@ build() {
 		--prefix=/ \
 		--openssldir=/etc/ssl \
 		--libdir=lib \
-		$CUSTOM
+		$EXTRA_CONF
 		
 	make -j$(nproc) V=1
 }
@@ -27,7 +27,7 @@ install() {
 	make install DESTDIR=$INSTALL_DIR
 
 	mv $INSTALL_DIR/lib/pkgconfig $INSTALL_DIR/share
-	cp -ri $INSTALL_DIR/etc/* System/Settings
+	cp -ri $INSTALL_DIR/etc/* /System/Settings
 
 	rm -rf "$INSTALL_DIR/lib/libcrypto.a"
 	rm -rf "$INSTALL_DIR/lib/libssl.a"

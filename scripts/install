@@ -23,7 +23,7 @@ if [ -z "$2" ]; then
 fi
 
 echo "Updating software list..."
-git -C /Programs/blazeos pull -f
+#git -C /Programs/blazeos pull -f
 
 PACKAGE=$2
 VERSION=$3
