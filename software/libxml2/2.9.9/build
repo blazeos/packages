@@ -1,15 +1,17 @@
-NAME="nano"
-FILENAME="nano-4.3.tar.xz"
-SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
+NAME="libxml2"
+FILENAME="libxml2-2.9.9.tar.gz"
+SOURCE="http://xmlsoft.org/sources/$FILENAME"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
-	cd "$BUILD_DIR/nano-4.3"
+	cd "$BUILD_DIR/libxml2-2.9.9"
+	
+	sed -e '/^pkgconfigdir/ s/$(libdir).*$/$(datadir)\/pkgconfig/' -i Makefile.in
 	
 	./configure \
 		--prefix=/ \
-		--sysconfdir=/etc \
-		--enable-utf8 \
+		--disable-static \
+		--with-history \
 		--host=$ARCH
 		
 	make -j$(nproc) V=1
@@ -17,8 +19,10 @@ build() {
 
 install() {
 	make install DESTDIR=$INSTALL_DIR
-	rm -rf "$INSTALL_DIR/share/doc"
-	rm -rf "$INSTALL_DIR/share/info"
+	rm -rf "$INSTALL_DIR/lib/cmake"
+	rm -rf "$INSTALL_DIR/lib/xml2Conf.sh"
 	rm -rf "$INSTALL_DIR/share/locale"
+	rm -rf "$INSTALL_DIR/share/doc"
+	rm -rf "$INSTALL_DIR/share/gtk-doc"
 	rm -rf "$INSTALL_DIR/share/man"
 }
