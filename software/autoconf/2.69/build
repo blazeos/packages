@@ -15,5 +15,6 @@ build() {
 
 install() {
 	make install DESTDIR=$INSTALL_DIR
-	#rm -rf "$INSTALL_DIR/share/doc"
+	rm -rf "$INSTALL_DIR/share/info"
+	rm -rf "$INSTALL_DIR/share/man"
 }
