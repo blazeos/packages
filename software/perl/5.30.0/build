@@ -13,10 +13,8 @@ build() {
 		-Duseshrplib \
 		-Dusethreads \
 		-Dtargetarch=$ARCH \
-		-Dprivlibexp=$INSTALL_DIR/share/perl5 \
-		-Darchlibexp=$INSTALL_DIR/share/perl5 \
-		-Dprivlib=/System/Index/Shared/perl5 \
-		-Darchlib=/System/Index/Shared/perl5 \
+		-Dprivlib=$INSTALL_DIR/share/perl5 \
+		-Darchlib=$INSTALL_DIR/share/perl5 \
 		-Dvendorlib=/System/Index/Shared/perl5 \
 		-Dsitelib=/System/Index/Shared/perl5 \
 		-Uinstallusrbinperl
