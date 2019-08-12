@@ -1,24 +1,8 @@
-NAME="nano"
-FILENAME="nano-4.3.tar.xz"
-SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
-
-build() {
-	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
-	cd "$BUILD_DIR/nano-4.3"
-	
-	./configure \
-		--prefix=/ \
-		--sysconfdir=/etc \
-		--enable-utf8 \
-		--host=$ARCH
-		
-	make -j$(nproc) V=1
-}
+NAME="ca-certificates"
+FILENAME="cacert-2019-05-15.pem"
+SOURCE="https://curl.haxx.se/ca/$FILENAME"
 
 install() {
-	make install DESTDIR=$INSTALL_DIR
-	rm -rf "$INSTALL_DIR/share/doc"
-	rm -rf "$INSTALL_DIR/share/info"
-	rm -rf "$INSTALL_DIR/share/locale"
-	rm -rf "$INSTALL_DIR/share/man"
+	mkdir -p $INSTALL_DIR/share/ssl-certs
+	cp $CACHE_DIR/$FILENAME $INSTALL_DIR/share/ssl-certs/cacert.pem 
 }
