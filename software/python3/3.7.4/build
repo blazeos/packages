@@ -29,4 +29,5 @@ install() {
 	mv $INSTALL_DIR/lib/pkgconfig $INSTALL_DIR/share
 	mv $INSTALL_DIR/lib/python3.7 $INSTALL_DIR/share
 	rm -rf "$INSTALL_DIR/share/man"
+	rm -rf "$INSTALL_DIR/share/python3.7/test"
 }
