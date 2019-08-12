@@ -1,6 +1,7 @@
 NAME="python3"
 FILENAME="Python-3.7.4.tar.xz"
 SOURCE="https://www.python.org/ftp/python/3.7.4/$FILENAME"
+DEPENDENCIES="libffi expat"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
@@ -27,7 +28,6 @@ install() {
 	unlink $INSTALL_DIR/bin/pyvenv
 	
 	mv $INSTALL_DIR/lib/pkgconfig $INSTALL_DIR/share
-	mv $INSTALL_DIR/lib/python3.7 $INSTALL_DIR/share
 	rm -rf "$INSTALL_DIR/share/man"
 	rm -rf "$INSTALL_DIR/share/python3.7/test"
 }
