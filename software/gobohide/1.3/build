@@ -1,15 +1,14 @@
-NAME="nano"
-FILENAME="nano-4.3.tar.xz"
-SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
+NAME="gobohide"
+FILENAME="GoboHide-1.3.tar.gz"
+SOURCE="https://github.com/gobolinux/GoboHide/releases/download/1.3/$FILENAME"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
-	cd "$BUILD_DIR/nano-4.3"
+	cd "$BUILD_DIR/GoboHide-1.3"
 	
+	./autogen.sh
 	./configure \
 		--prefix=/ \
-		--sysconfdir=/etc \
-		--enable-utf8 \
 		--host=$ARCH
 		
 	make -j$(nproc) V=1
@@ -17,8 +16,6 @@ build() {
 
 install() {
 	make install DESTDIR=$INSTALL_DIR
-	rm -rf "$INSTALL_DIR/share/doc"
-	rm -rf "$INSTALL_DIR/share/info"
-	rm -rf "$INSTALL_DIR/share/locale"
-	rm -rf "$INSTALL_DIR/share/man"
+	rm -rf "$INSTALL_DIR/etc"
+	rm -rf "$INSTALL_DIR/share"
 }
