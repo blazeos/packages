@@ -1,24 +1,37 @@
-NAME="nano"
-FILENAME="nano-4.3.tar.xz"
-SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
+NAME="openssl"
+FILENAME="openssl-1.1.1c.tar.gz"
+SOURCE="https://www.openssl.org/source/$FILENAME"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
-	cd "$BUILD_DIR/nano-4.3"
+	cd "$BUILD_DIR/openssl-1.1.1c"
 	
-	./configure \
+	CUSTOM="linux-x86_64"
+	if [[ $ARCH == *"arm"* ]]; then
+		CUSTOM="linux-armv4"
+	fi
+	
+	./Configure \
+		-DL_ENDIAN \
+		shared \
+		zlib-dynamic \
 		--prefix=/ \
-		--sysconfdir=/etc \
-		--enable-utf8 \
-		--host=$ARCH
+		--openssldir=/etc/ssl \
+		--libdir=lib \
+		$CUSTOM
 		
 	make -j$(nproc) V=1
 }
 
 install() {
 	make install DESTDIR=$INSTALL_DIR
+
+	mv $INSTALL_DIR/lib/pkgconfig $INSTALL_DIR/share
+	cp -ri $INSTALL_DIR/etc/* System/Settings
+
+	rm -rf "$INSTALL_DIR/lib/libcrypto.a"
+	rm -rf "$INSTALL_DIR/lib/libssl.a"
 	rm -rf "$INSTALL_DIR/share/doc"
-	rm -rf "$INSTALL_DIR/share/info"
-	rm -rf "$INSTALL_DIR/share/locale"
 	rm -rf "$INSTALL_DIR/share/man"
+	rm -rf "$INSTALL_DIR/etc"
 }
