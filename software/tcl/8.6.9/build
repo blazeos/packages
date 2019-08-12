@@ -1,15 +1,14 @@
-NAME="nano"
-FILENAME="nano-4.3.tar.xz"
-SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
+NAME="tcl"
+FILENAME="tcl8.6.9-src.tar.gz"
+SOURCE="https://downloads.sourceforge.net/tcl/$FILENAME"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
-	cd "$BUILD_DIR/nano-4.3"
+	cd "$BUILD_DIR/tcl8.6.9/unix"
 	
 	./configure \
 		--prefix=/ \
-		--sysconfdir=/etc \
-		--enable-utf8 \
+		--enable-threads \
 		--host=$ARCH
 		
 	make -j$(nproc) V=1
@@ -17,8 +16,9 @@ build() {
 
 install() {
 	make install DESTDIR=$INSTALL_DIR
-	rm -rf "$INSTALL_DIR/share/doc"
-	rm -rf "$INSTALL_DIR/share/info"
-	rm -rf "$INSTALL_DIR/share/locale"
+	rm -rf "$INSTALL_DIR/man"
 	rm -rf "$INSTALL_DIR/share/man"
+	
+	mv $INSTALL_DIR/lib/pkgconfig $INSTALL_DIR/share
+	ln -s tclsh8.6 $INSTALL_DIR/bin/tclsh	
 }
