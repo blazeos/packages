@@ -1,15 +1,15 @@
-NAME="nano"
-FILENAME="nano-4.3.tar.xz"
-SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
+NAME="git"
+FILENAME="git-2.22.0.tar.xz"
+SOURCE="https://www.kernel.org/pub/software/scm/git/$FILENAME"
+DEPENDENCIES="curl tcl gettext"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
-	cd "$BUILD_DIR/nano-4.3"
+	cd "$BUILD_DIR/git-2.22.0"
 	
 	./configure \
 		--prefix=/ \
-		--sysconfdir=/etc \
-		--enable-utf8 \
+		--with-gitconfig=/System/Settings/gitconfig \
 		--host=$ARCH
 		
 	make -j$(nproc) V=1
@@ -17,8 +17,5 @@ build() {
 
 install() {
 	make install DESTDIR=$INSTALL_DIR
-	rm -rf "$INSTALL_DIR/share/doc"
-	rm -rf "$INSTALL_DIR/share/info"
 	rm -rf "$INSTALL_DIR/share/locale"
-	rm -rf "$INSTALL_DIR/share/man"
 }
