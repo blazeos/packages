@@ -61,6 +61,7 @@ if [ ! -f "$CACHE_DIR/$FILENAME" ]; then
   #VERIFY CHECKSUM!!
 fi
 
+type -t build
 if [ "$(type -t build)" = 'function' ]; then
   echo "Compiling $NAME..."
   build
