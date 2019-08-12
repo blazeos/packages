@@ -19,7 +19,7 @@ build() {
 }
 
 install() {
-	make install DESTDIR=$INSTALL_DIR BINLIBDEST=$INSTALL_DIR/share/python3.7
+	make install DESTDIR=$INSTALL_DIR BINLIBDEST=share/python3.7
 	
 	mv $INSTALL_DIR/lib/pkgconfig $INSTALL_DIR/share
 	rm -rf "$INSTALL_DIR/share/man"
