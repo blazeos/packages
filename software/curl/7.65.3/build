@@ -1,7 +1,7 @@
 NAME="curl"
 FILENAME="curl-7.65.3.tar.xz"
 SOURCE="https://curl.haxx.se/download/$FILENAME"
-DEPENDENCIES=(perl ca-certificates)
+DEPENDENCIES="perl ca-certificates"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
