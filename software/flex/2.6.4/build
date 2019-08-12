@@ -1,15 +1,16 @@
-NAME="nano"
-FILENAME="nano-4.3.tar.xz"
-SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
+NAME="flex"
+FILENAME="flex-2.6.4.tar.gz"
+SOURCE="https://github.com/westes/flex/files/981163/$FILENAME"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
-	cd "$BUILD_DIR/nano-4.3"
+	cd "$BUILD_DIR/flex-2.6.4"
+	
+	sed -i "/math.h/a #include <malloc.h>" src/flexdef.h
 	
 	./configure \
 		--prefix=/ \
-		--sysconfdir=/etc \
-		--enable-utf8 \
+		--disable-static \
 		--host=$ARCH
 		
 	make -j$(nproc) V=1
@@ -17,8 +18,5 @@ build() {
 
 install() {
 	make install DESTDIR=$INSTALL_DIR
-	rm -rf "$INSTALL_DIR/share/doc"
-	rm -rf "$INSTALL_DIR/share/info"
-	rm -rf "$INSTALL_DIR/share/locale"
-	rm -rf "$INSTALL_DIR/share/man"
+	rm -rf "$INSTALL_DIR/share"
 }
