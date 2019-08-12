@@ -1,0 +1,26 @@
+--- ./Lib/site.py
++++ ./Lib/site.py
+@@ -271,7 +271,7 @@
+     if sys.platform == 'darwin' and sys._framework:
+         return f'{userbase}/lib/python/site-packages'
+ 
+-    return f'{userbase}/lib/python{version[0]}.{version[1]}/site-packages'
++    return f'{userbase}/share/python{version[0]}.{version[1]}/site-packages'
+ 
+ 
+ def getuserbase():
+@@ -334,12 +334,12 @@
+         seen.add(prefix)
+ 
+         if os.sep == '/':
+-            sitepackages.append(os.path.join(prefix, "lib",
++            sitepackages.append(os.path.join(prefix, "share",
+                                         "python%d.%d" % sys.version_info[:2],
+                                         "site-packages"))
+         else:
+             sitepackages.append(prefix)
+-            sitepackages.append(os.path.join(prefix, "lib", "site-packages"))
++            sitepackages.append(os.path.join(prefix, "share", "site-packages"))
+     return sitepackages
+ 
+ def addsitepackages(known_paths, prefixes=None):
