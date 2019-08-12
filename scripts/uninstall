@@ -11,6 +11,7 @@ fi
 #git
 #curl
 #zlib
+#openssl
 
 PACKAGE=$2
 VERSION=$3
