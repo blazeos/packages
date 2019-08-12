@@ -7,14 +7,14 @@ build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
 	cd "$BUILD_DIR/Python-3.7.4"
 	
-	patch -p1 < /Programs/blazeos/software/python3/3.7.4/patches/move_libs_to_share.patch
+	#patch -p1 < /Programs/blazeos/software/python3/3.7.4/patches/move_libs_to_share.patch
 	
 	./configure \
 		--prefix=/ \
 		--enable-shared \
 		--with-system-expat \
 		--with-system-ffi \
-		--with-ensurepip=yes \
+		--with-ensurepip=no \
 		--host=$ARCH \
 		--build=$ARCH
 		
