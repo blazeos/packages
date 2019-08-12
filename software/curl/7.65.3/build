@@ -1,15 +1,21 @@
-NAME="nano"
-FILENAME="nano-4.3.tar.xz"
-SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
+NAME="curl"
+FILENAME="curl-7.65.3.tar.xz"
+SOURCE="https://curl.haxx.se/download/$FILENAME"
+DEPENDENCIES=(perl ca-certificates)
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
-	cd "$BUILD_DIR/nano-4.3"
+	cd "$BUILD_DIR/curl-7.65.3"
+	
+	sed -e '/^pkgconfigdir/ s/$(libdir).*$/$(datadir)\/pkgconfig/' -i Makefile.in
 	
 	./configure \
 		--prefix=/ \
-		--sysconfdir=/etc \
-		--enable-utf8 \
+		--disable-static \
+		--enable-threaded-resolver \
+		--with-ca-bundle=/System/Index/Shared/ssl-certs/cacert.pem \
+		--with-ca-path=/System/Index/Shared/ssl-certs \
+		--with-ca-fallback \
 		--host=$ARCH
 		
 	make -j$(nproc) V=1
@@ -17,8 +23,5 @@ build() {
 
 install() {
 	make install DESTDIR=$INSTALL_DIR
-	rm -rf "$INSTALL_DIR/share/doc"
-	rm -rf "$INSTALL_DIR/share/info"
-	rm -rf "$INSTALL_DIR/share/locale"
 	rm -rf "$INSTALL_DIR/share/man"
 }
