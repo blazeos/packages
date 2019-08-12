@@ -53,6 +53,11 @@ fi
 
 source /Programs/blazeos/software/$PACKAGE/$VERSION/build
 
+#INSTALL ALL DEPENDENCIES!!
+#for s in $services;
+#  START "$s"
+#done
+
 rm -rf "$BUILD_DIR/*"
 
 if [ ! -f "$CACHE_DIR/$FILENAME" ]; then
