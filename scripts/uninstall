@@ -85,8 +85,7 @@ fi
 echo "Removing files from Programs..."
 rm -rf "/Programs/$PACKAGE/$VERSION"
 
-#CHECK IF CURENT EXISTS!
-if [ ! -e "/Programs/$PACKAGE/current" ]; then
+if [ -L "/Programs/$PACKAGE/current" ] && [ ! -e "/Programs/$PACKAGE/current" ]; then
   unlink "/Programs/$PACKAGE/current"
 fi
 
