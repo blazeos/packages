@@ -1,15 +1,15 @@
-NAME="nano"
-FILENAME="nano-4.3.tar.xz"
-SOURCE="https://www.nano-editor.org/dist/v4/$FILENAME"
+NAME="libnl"
+FILENAME="libnl-3.4.0.tar.gz"
+SOURCE="https://github.com/thom311/libnl/releases/download/libnl3_4_0/$FILENAME"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
-	cd "$BUILD_DIR/nano-4.3"
+	cd "$BUILD_DIR/libnl-3.4.0"
 	
 	./configure \
 		--prefix=/ \
 		--sysconfdir=/etc \
-		--enable-utf8 \
+		--disable-static \
 		--host=$ARCH
 		
 	make -j$(nproc) V=1
@@ -17,8 +17,9 @@ build() {
 
 install() {
 	make install DESTDIR=$INSTALL_DIR
-	rm -rf "$INSTALL_DIR/share/doc"
-	rm -rf "$INSTALL_DIR/share/info"
-	rm -rf "$INSTALL_DIR/share/locale"
 	rm -rf "$INSTALL_DIR/share/man"
+	
+	mv $INSTALL_DIR/lib/pkgconfig $INSTALL_DIR/share
+	cp -ir $INSTALL_DIR/etc/* /System/Settings
+	rm -rf $INSTALL_DIR/etc
 }
