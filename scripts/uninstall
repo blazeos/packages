@@ -15,6 +15,7 @@ if [ -z "$VERSION" ]; then
   VERSION=$(readlink /Programs/$PACKAGE/current) || true
   if [ -z "$VERSION" ]; then
     echo "Please specify which version to uninstall."
+    ls /Programs/$PACKAGE
     exit 1
   fi
 fi
