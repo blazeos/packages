@@ -14,7 +14,7 @@ build() {
 		-Dusethreads \
 		-Dtargetarch=$ARCH \
 		-Dotherlibdirs=/System/Index/Shared/perl5 \
-		-Dlibpth=$INSTALL_DIR/share/perl5
+		-Dlibpth=$INSTALL_DIR/share/perl5 \
 		-Uinstallusrbinperl
 		
 	make -j$(nproc) V=1
