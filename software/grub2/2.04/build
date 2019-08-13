@@ -18,7 +18,9 @@ build() {
 
 install() {
 	make install DESTDIR=$INSTALL_DIR
+	cp -r $INSTALL_DIR/etc/* /System/Settings
 	rm -rf "$INSTALL_DIR/share/info"
 	rm -rf "$INSTALL_DIR/share/locale"
 	rm -rf "$INSTALL_DIR/share/man"
+	rm -rf "$INSTALL_DIR/share/etc"
 }
