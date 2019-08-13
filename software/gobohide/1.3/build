@@ -10,7 +10,8 @@ build() {
 	./autogen.sh
 	./configure \
 		--prefix=/ \
-		--host=$ARCH
+		#--host=$ARCH \
+		--host=aarch64-linux-gnu
 		
 	make -j$(nproc) V=1
 }
