@@ -22,8 +22,10 @@ if [ -z "$2" ]; then
   exit 1
 fi
 
-echo "Updating software list..."
-git -C /Programs/blazeos pull -f
+if [ -f "/bin/git" ]; then
+  echo "Updating software list..."
+  git -C /Programs/blazeos pull -f
+fi
 
 PACKAGE=$2
 VERSION=$3
