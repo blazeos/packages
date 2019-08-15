@@ -70,7 +70,7 @@ fi
 
 #THE BUILD AND INSTALL SHOULD BE RUN AS A NORMAL USER TO PREVENT CONTAMINATING THE SYSTEM!
 
-if [ "$(type -t build)" = 'build' ]; then
+if [ "$(type build)" = 'build is a function' ]; then
   echo "Compiling $NAME..."
   build
 fi
