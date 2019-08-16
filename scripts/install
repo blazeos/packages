@@ -81,10 +81,21 @@ install
 #IF CURRENT ALREADY EXIST, MUST UNLINK CURRENT VERSION FIRST!!!
 
 echo "Stripping binaries and libraries..."
-find $INSTALL_DIR/bin -executable -type f | xargs strip -s &> /dev/null || true
-find $INSTALL_DIR/sbin -executable -type f | xargs strip -s &> /dev/null || true
-find $INSTALL_DIR/libexec -executable -type f | xargs strip -s &> /dev/null || true
-find $INSTALL_DIR/lib -type f | xargs strip -s &> /dev/null || true
+if [ -f "$INSTALL_DIR/bin" ]; then
+  find $INSTALL_DIR/bin -executable -type f | xargs strip -s &> /dev/null || true
+fi
+
+if [ -f "$INSTALL_DIR/sbin" ]; then
+  find $INSTALL_DIR/sbin -executable -type f | xargs strip -s &> /dev/null || true
+fi
+
+if [ -f "$INSTALL_DIR/libexec" ]; then
+  find $INSTALL_DIR/libexec -executable -type f | xargs strip -s &> /dev/null || true
+fi
+
+if [ -f "$INSTALL_DIR/lib" ]; then
+  find $INSTALL_DIR/lib -type f | xargs strip -s &> /dev/null || true
+fi
 
 echo "Change active version to $VERSION"
 ln -sf $VERSION /Programs/$PACKAGE/current
