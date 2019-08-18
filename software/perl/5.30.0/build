@@ -1,6 +1,6 @@
 NAME="perl"
 FILENAME="perl-5.30.0.tar.gz"
-SOURCE="https://www.cpan.org/src/5.0/$FILENAME"
+SOURCE="http://www.cpan.org/src/5.0/$FILENAME"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
