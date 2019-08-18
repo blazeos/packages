@@ -1,6 +1,6 @@
 NAME="zlib"
 FILENAME="zlib-1.2.11.tar.gz"
-SOURCE="https://zlib.net/$FILENAME"
+SOURCE="http://zlib.net/$FILENAME"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
