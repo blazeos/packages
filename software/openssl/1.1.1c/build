@@ -1,6 +1,6 @@
 NAME="openssl"
 FILENAME="openssl-1.1.1c.tar.gz"
-SOURCE="http://www.openssl.org/source/$FILENAME"
+SOURCE="ftp://ftp.pca.dfn.de/pub/tools/net/openssl/source/$FILENAME"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
