@@ -1,6 +1,7 @@
 NAME="bison"
 FILENAME="bison-3.4.1.tar.xz"
 SOURCE="http://ftp.gnu.org/gnu/bison/$FILENAME"
+DEPENDENCIES="perl"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
