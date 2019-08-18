@@ -1,6 +1,7 @@
 NAME="flex"
 FILENAME="flex-2.6.4.tar.gz"
 SOURCE="https://github.com/westes/flex/files/981163/$FILENAME"
+DEPENDENCIES="openssl"
 
 build() {
 	tar xf "$CACHE_DIR/$FILENAME" -C "$BUILD_DIR"
