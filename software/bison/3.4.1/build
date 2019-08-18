@@ -13,7 +13,7 @@ build() {
  		--disable-nls \
 		--host=$ARCH
 		
-	#bison does not support multi-core compile
+	#multi-core compile could cause race condition with bison
 	make -j1 V=1
 }
 
