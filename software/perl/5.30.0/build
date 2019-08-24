@@ -12,6 +12,7 @@ build() {
 		-Dvendorprefix=$INSTALL_DIR \
 		-Duseshrplib \
 		-Dusethreads \
+		-Dcc=gcc \
 		-Dtargetarch=$ARCH \
 		-Dprivlib=$INSTALL_DIR/share/perl5 \
 		-Darchlib=$INSTALL_DIR/share/perl5 \
