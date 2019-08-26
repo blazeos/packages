@@ -105,6 +105,7 @@ link_files Binaries $PACKAGE/$VERSION/bin
 link_files Binaries $PACKAGE/$VERSION/sbin
 link_files Includes $PACKAGE/$VERSION/include
 link_files Libraries $PACKAGE/$VERSION/lib
+link_files Libraries $PACKAGE/$VERSION/lib64
 link_files Libraries/libexec $PACKAGE/$VERSION/libexec
 link_files Shared $PACKAGE/$VERSION/share
 
